@@ -42,5 +42,17 @@ public class CryptoController {
             return cryptoService.getCryptoById(id);
     }
 
+    @PutMapping("/cryptos/{id}")
+    public void updateCrypto(
+            @PathVariable Integer id,
+            @RequestBody Crypto crypto
+    ) {
+        cryptoService.updateCrypto(id, crypto);
+    }
+
+    @GetMapping("/portfolio-value")
+    public Double getTotalValue() {
+        return cryptoService.getTotalValue();
+    }
 
 }

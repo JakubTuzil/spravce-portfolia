@@ -44,4 +44,23 @@ public class CryptoService {
                 .orElse(null);
     }
 
+    public void updateCrypto(Integer id, Crypto updatedCrypto) {
+        for (Crypto crypto : cryptoList) {
+            if (crypto.getId().equals(id)) {
+                crypto.setName(updatedCrypto.getName());
+                crypto.setSymbol(updatedCrypto.getSymbol());
+                crypto.setPrice(updatedCrypto.getPrice());
+                crypto.setQuantity(updatedCrypto.getQuantity());
+                return;
+            }
+        }
+    }
+
+    public Double getTotalValue() {
+        Double totalValue = 0.0;
+        for (Crypto crypto : cryptoList) {
+            totalValue += crypto.getPrice() * crypto.getQuantity();
+        }
+        return totalValue;
+    }
 }
