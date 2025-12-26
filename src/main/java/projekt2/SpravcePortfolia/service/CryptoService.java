@@ -37,4 +37,11 @@ public class CryptoService {
                 .toList();
     }
 
+    public Crypto getCryptoById(Integer id) {
+        return cryptoList.stream()
+                .filter(r -> r.getId().equals(id))
+                .findFirst()
+                .orElse(null);
+    }
+
 }
